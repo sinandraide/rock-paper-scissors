@@ -1,5 +1,3 @@
-Math.random();
-
 const CHOICES = ["rock", "paper", "scissors"];
 let p1Score = 0;
 let cpScore = 0;
