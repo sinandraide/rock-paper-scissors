@@ -4,7 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock-Paper-Scissors</title>
-    <script src="script/script.js"></script>
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/slider.css" />
+    <script src="script/dark.js" defer></script>
+    <script src="script/script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Rock-Paper-Scissors</h1>
+        <label class="switch">
+          <input id="switcher" type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </header>
+      <div class="scoreboard">
+        <div id="player-score">Your Score:</div>
+        <div id="computer-score" class>Computer Score:</div>
+      </div>
+
+      <div class="content">
+        <button class="scissors">
+          <img src="images/scizors_preview_e084.png" id="scissors" alt="" />
+        </button>
+        <button class="paper">
+          <img
+            id="paper"
+            src="https://parkercon.github.io/rock-paper-scissors/images/paper.png"
+            alt=""
+          />
+        </button>
+        <button class="rock">
+          <img
+            id="rock"
+            src="https://parkercon.github.io/rock-paper-scissors/images/rock.png"
+            alt=""
+          />
+        </button>
+      </div>
+      <div class="results">Select your choice!</div>
+      <footer>
+        <img class="github" src="images/github-icon.png" alt="" /> sinandraide
+      </footer>
+    </div>
+  </body>
 </html>

@@ -1,6 +1,10 @@
 const CHOICES = ["rock", "paper", "scissors"];
 let p1Score = 0;
 let cpScore = 0;
+const [scissors, paper, rock] = document.querySelectorAll(".content button");
+const result = document.querySelector(".results");
+const playerScoreDiv = document.querySelector("#player-score");
+const computerScoreDiv = document.querySelector("#computer-score");
 
 /* 
 selects a random rock-paper-scissor choice
@@ -46,31 +50,41 @@ const _determineWinner = (playerSelection, computerSelection) => {
   }
 };
 
-const game = (pointsNeeded) => {
-  while (p1Score !== pointsNeeded && cpScore !== pointsNeeded) {
-    let p1Choice = prompt("rock, paper or scissors: ").toLowerCase();
-    let cpChoice = getComputerChoice();
-    if (!CHOICES.includes(p1Choice)) {
-      console.log("wrong choice! Select again!");
-      continue;
-    }
-
-    let winner = singleRound(p1Choice, cpChoice);
-    if (winner === "DRAW") {
-      console.log("DRAW! Select again!");
-    } else if (winner === "P1") {
-      console.log(p1Victory(p1Choice, cpChoice));
-      p1Score++;
-    } else {
-      console.log(cpVictory(p1Choice, cpChoice));
-      cpScore++;
-    }
-
-    console.log(`P1 Score: ${p1Score}, CP Score: ${cpScore}`);
+const game = (event) => {
+  let cpChoice = getComputerChoice();
+  let p1Choice = event.target.id;
+  let winner = singleRound(p1Choice, cpChoice);
+  let text = "";
+  if (winner === "DRAW") {
+    text = "DRAW!";
+  } else if (winner === "P1") {
+    text = p1Victory(p1Choice, cpChoice);
+    p1Score++;
+  } else {
+    text = cpVictory(p1Choice, cpChoice);
+    cpScore++;
   }
 
-  if (p1Score > cpScore) console.log("YOU WIN!");
-  else console.log("YOU LOSE!");
+  playerScoreDiv.textContent = `P1 Score: ${p1Score}`;
+  computerScoreDiv.textContent = `CP Score: ${cpScore}`;
+  result.textContent = text;
+  if (p1Score === 5) {
+    alert("YOU WIN!");
+    reset();
+  } else if (cpScore === 5) {
+    alert("YOU LOSE!");
+    reset();
+  }
 };
 
-game(5);
+const reset = () => {
+  playerScoreDiv.textContent = "";
+  computerScoreDiv.textContent = "";
+  result.textContent = "";
+  p1Score = 0;
+  cpScore = 0;
+};
+
+scissors.addEventListener("click", game);
+paper.addEventListener("click", game);
+rock.addEventListener("click", game);
