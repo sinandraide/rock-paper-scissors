@@ -65,7 +65,7 @@ const game = (event) => {
     cpScore++;
   }
 
-  playerScoreDiv.textContent = `P1 Score: ${p1Score}`;
+  playerScoreDiv.textContent = `Player Score: ${p1Score}`;
   computerScoreDiv.textContent = `CP Score: ${cpScore}`;
   result.textContent = text;
   if (p1Score === 5) {
@@ -78,8 +78,8 @@ const game = (event) => {
 };
 
 const reset = () => {
-  playerScoreDiv.textContent = "";
-  computerScoreDiv.textContent = "";
+  playerScoreDiv.textContent = "Player Score: ";
+  computerScoreDiv.textContent = "CP Score:";
   result.textContent = "";
   p1Score = 0;
   cpScore = 0;
